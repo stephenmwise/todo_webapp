@@ -11,6 +11,12 @@ st.title("To-do App")
 st.subheader("General tasks")
 st.write("Create and complete to-do items below.")
 
+st.text_input(label="",
+              label_visibility="collapsed",
+              placeholder="Add new todo item...",
+              on_change=add_todo,
+              key="new_todo")
+
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
     if checkbox:
@@ -19,8 +25,3 @@ for index, todo in enumerate(todos):
         del st.session_state[todo]
         st.rerun()
 
-st.text_input(label="",
-              label_visibility="collapsed",
-              placeholder="Add new todo item...",
-              on_change=add_todo,
-              key="new_todo")
